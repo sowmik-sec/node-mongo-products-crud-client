@@ -16,6 +16,7 @@ const AddProducts = () => {
         console.log(data);
         if (data.acknowledged) {
           alert("Product added");
+          event.target.reset();
         }
       });
   };
