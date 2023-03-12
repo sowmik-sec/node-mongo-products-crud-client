@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const Home = () => {
   const loadedProducts = useLoaderData();
@@ -25,12 +25,17 @@ const Home = () => {
     }
   };
 
+  const handleUpdate = (product) => {};
+
   return (
     <div>
       <h1>Products:</h1>
       {products.map((product) => (
         <p key={product._id}>
           {product.name} price: ${product.price}{" "}
+          <Link to={`/update/${product._id}`}>
+            <button onClick={() => handleUpdate(product)}>Update</button>
+          </Link>
           <button onClick={() => handleDelete(product)}>X</button>
         </p>
       ))}

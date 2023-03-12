@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./components/Home";
 import Products from "./components/AddProducts";
 import AddProducts from "./components/AddProducts";
+import Update from "./components/Update";
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,12 @@ function App() {
     {
       path: "/products/add",
       element: <AddProducts />,
+    },
+    {
+      path: "/update/:id",
+      element: <Update />,
+      loader: ({ params }) =>
+        fetch(`http://localhost:5000/products/${params.id}`),
     },
   ]);
   return (
